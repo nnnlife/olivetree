@@ -1,5 +1,4 @@
 {
-    "name": "olivetree",
     "alias": "olivetree.io",
     "env": {
         "NODE_ENV": "production"

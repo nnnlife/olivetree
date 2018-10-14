@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "now": "now && now alias && now rm olivetree --safe --yes",
+    "now-upgrade": "npm install now -g"
   },
   "repository": {
     "type": "git",
