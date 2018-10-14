@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "now": {
+    "alias": "olivetree"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js",
-    "build": "next build",
-    "now": "now && now alias && now rm olivetree --safe --yes",
-    "now-upgrade": "npm install now -g"
+    "build": "next build"
   },
   "repository": {
     "type": "git",
