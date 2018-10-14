@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "node server/server.js",
+    "build": "next build",
     "now": "now && now alias && now rm olivetree --safe --yes",
     "now-upgrade": "npm install now -g"
   },
@@ -25,6 +26,9 @@
     "express": "^4.16.4",
     "morgan": "^1.9.1",
     "next": "^7.0.2",
-    "passport": "^0.4.0"
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^1.0.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
   }
 }
