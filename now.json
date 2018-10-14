@@ -1,6 +1,7 @@
 {
     "alias": "olivetree.io",
     "env": {
-        "NODE_ENV": "production"
+        "NODE_ENV": "production",
+        "MONGO_URL": "@olivetree-mongo-url"
     }
 }
