@@ -1,5 +1,5 @@
 {
-    "alias": ["olivetree.io", "www.olivetee.io"],
+    "alias": "olivetree.io",
     "env": {
         "NODE_ENV": "production",
         "MONGO_URL": "@olivetree-mongo-url",
