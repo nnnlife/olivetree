@@ -1,7 +1,14 @@
-const Index = () => (
-    <h1>
-        Next js
-    </h1>
-);
+import React from 'react';
 
-export default Index;
+export default class Index extends React.Component {
+    render() {
+        return (
+            <div>
+            <h1>
+                Memorize through Card
+            </h1>
+            <a href='/login'>Login</a>
+            </div>
+        );
+    }
+}
