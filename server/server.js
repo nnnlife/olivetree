@@ -28,7 +28,7 @@ app.prepare().then(() => {
     server.use(session({secret: config.SESSION_SECRET}));
     server.use(passport.initialize());
     server.use(passport.session());
-    if (dev) {
+    if (!dev) {
         server.use(vhost('www.olivetree.io', server));
     }
 
