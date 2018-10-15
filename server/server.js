@@ -1,7 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
-
+const vhost = require('vhost');
 const next = require('next');
 const mongoose = require('mongoose');
 const validator = require('validator');
@@ -28,6 +28,9 @@ app.prepare().then(() => {
     server.use(session({secret: config.SESSION_SECRET}));
     server.use(passport.initialize());
     server.use(passport.session());
+    if (dev) {
+        server.use(vhost('www.olivetree.io', server));
+    }
 
     server.get('/', (req, res) => {
         if (req.user) {
