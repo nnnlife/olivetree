@@ -43,11 +43,20 @@ app.prepare().then(() => {
     server.post('/login', passport.authenticate('local', {successRedirect: '/', failureRedirect: '/login'}));
     server.post('/register', (req, res) => {
         if (validator.isEmail(req.body.username) && req.body.password.length > 5) {
-            let user = new User({
-                email: req.body.username,
-                password: req.body.password,
+            User.findOne({email: req.body.username}, function(err, user) {
+                // TODO: when failed how to handle it?
+                if (err) res.redirect('/login');
+                else if (!user) {
+                    let user = new User({
+                        email: req.body.username,
+                        password: req.body.password,
+                    });
+                    user.save().then(res.redirect('/login'));
+                }
+                else {
+                    res.redirect('/login');
+                }
             });
-            user.save().then(res.redirect('/login'));
         }
     });
 
