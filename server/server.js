@@ -18,8 +18,6 @@ const handle = app.getRequestHandler();
 mongoose.connect(config.MONGO_URL);
 authSetup(passport);
 
-// https://www.googleapis.com/auth/userinfo.email
-// https://www.googleapis.com/auth/userinfo.profile
 
 app.prepare().then(() => {
     const server = express();
