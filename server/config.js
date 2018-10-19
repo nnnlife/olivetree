@@ -2,7 +2,7 @@ const dev = process.env.NODE_ENV !== 'production';
 
 const config = {
     MONGO_URL:
-        dev? 'mongodb://localhost:27017/olivetree':process.env.MONGO_URL,
+        dev? 'mongodb://nnnlife.iptime.org:27017/olivetree':process.env.MONGO_URL,
     SESSION_SECRET:
         dev? 'secret':process.env.SESSION_SECRET,
     GOOGLE_CLIENT_ID:
