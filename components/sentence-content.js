@@ -8,7 +8,7 @@ export default class SentenceContent extends React.Component {
 
     editorOnChange = (editorState) => {
         this.setState({editorState})
-        console.log("raw", convertToRaw(editorState.getCurrentContent()))
+        this.props.update(this.props.id, convertToRaw(editorState.getCurrentContent));
     }
 
     render() {

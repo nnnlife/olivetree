@@ -2,6 +2,9 @@ import React from 'react';
 import Popup from 'reactjs-popup';
 import SentenceContent from './sentence-content';
 
+var uniqueId = function() {
+    return 'id-' + Math.random().toString(36).substr(2, 16);
+};
 
 export default class CreateOlive extends React.Component {
     state = {
@@ -25,18 +28,30 @@ export default class CreateOlive extends React.Component {
     }
 
     createOlive = () => {
-
+        this.props.onCreate({keyword: this.state.keyword, contents: this.state.contents});
     }
 
     contentTypeChanged = e => {
         this.currentPluginSelection = e.target.value;
     }
 
+    contentUpdate = (id, content) => {
+        let found = this.state.contents.find(item => item.id === id);
+        found.content = content;  
+    }
+
     addContent = () => {
+        let key = uniqueId();
+
         switch(this.currentPluginSelection) {
             case 'Sentence':
                 let contents = this.state.contents;
-                contents.push((<SentenceContent/>));
+                contents.push({
+                    type: 'Sentence',
+                    id: key,
+                    view: (<SentenceContent id={key} update={this.contentUpdate}/>),
+                    content: Buffer,
+                });
                 this.setState({contents: contents});
             break;
         }
@@ -46,7 +61,7 @@ export default class CreateOlive extends React.Component {
         const options = this.plugins.map((item, index) => (
             <option value={item} key={index}>{item}</option>
         ));
-        const addedContents = this.state.contents.map((item, index) => item);
+        const addedContents = this.state.contents.map((item, index) => item.view);
         return(
                 <Popup trigger={<button className='button'>Add Contents</button>} onClose={() => {this.updateCreatePopup(false)}}
                          onOpen={() => {this.updateCreatePopup(true)}} open={this.state.createPopup} modal>                

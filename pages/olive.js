@@ -28,13 +28,14 @@ export default class Olive extends React.Component {
         }
     }
 
-    createOlive = () => {
+    createOlive = (data) => {
         fetch(config.SERVER_URL_PREFIX + '/api/create-olive', {
             method: "Post",
             credentials: 'include',
             body: JSON.stringify({
                 branch: this.props.branch, 
-                keyword: this.state.keyword, 
+                keyword: data.keyword,
+                contents: data.contents 
             }),
             headers: {
                 'Content-type': 'application/json'
@@ -44,7 +45,6 @@ export default class Olive extends React.Component {
         .then(data => {
             this.setState({olives: data})
         });
-        this.setState({createPopup: false, inputValue: ''});
     }
 
     render() {
@@ -52,7 +52,7 @@ export default class Olive extends React.Component {
         return (
             <div>
                 Olive Page
-                <CreateOlive contents={this.content} />
+                <CreateOlive onCreate={data => this.createOlive(data)} />
             </div>
         );
     }

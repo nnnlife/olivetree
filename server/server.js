@@ -13,6 +13,7 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({dev});
 
 const Branch = require('./branch');
+const Olive = require('./olive');
 
 const handle = app.getRequestHandler();
 
@@ -40,6 +41,22 @@ app.prepare().then(() => {
         }
     });
 
+    server.post('/api/create-olive', (req, res) => {
+        if (req.user) {
+            console.log(req.body.contents);
+            /*
+             let o = Olive({
+                branch: req.body.branch,
+                keyword: req.body.keyword,
+                contents: data.contents
+             })*/
+             res.send(200);
+        }
+        else {
+            res.send(400);
+        }
+    });
+
     server.get('/api/branch', (req, res) => {
         if (req.user) {
             Branch.find({user:req.user.id}, function(err, branch) {
@@ -56,7 +73,7 @@ app.prepare().then(() => {
     server.post('/api/create-branch', (req, res) => {
         console.log(req);
         if (req.user) {
-            d = Branch({
+            let d = Branch({
                 user: req.user.id,
                 name: req.body.name 
             });
