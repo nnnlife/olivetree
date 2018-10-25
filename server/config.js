@@ -1,6 +1,8 @@
 const dev = process.env.NODE_ENV !== 'production';
 
 const config = {
+    SERVER_URL_PREFIX:
+        dev? 'http://localhost:8080':'https://olivetree.io',
     MONGO_URL:
         dev? 'mongodb://nnnlife.iptime.org:27017/olivetree':process.env.MONGO_URL,
     SESSION_SECRET:
